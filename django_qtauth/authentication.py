@@ -10,6 +10,8 @@ from rest_framework.exceptions import AuthenticationFailed, NotAuthenticated
 from django_qcloud.api import cloudbase_request_http_api
 from requests.exceptions import HTTPError
 
+from .serializers import AuthUserSerializer
+
 
 class QtAuthentication(BaseAuthentication):
     """
@@ -48,9 +50,29 @@ class QtAuthentication(BaseAuthentication):
         try:
             # 验证成功，返回200
             # TODO：如果需要强制指定Content-Type才可以通过，修改腾讯云SDK的API使之暴露headers参数。
-            user = cloudbase_request_http_api(method='POST', path='/users/jwt-verify', data={"token": auth})
-            # 返回用户信息
-            return user, auth
+            user_data = cloudbase_request_http_api(method='POST', path='/users/jwt-verify', data={"token": auth})
         except HTTPError:
             # 验证失败，返回400（Bad Request）
-            raise AuthenticationFailed(detail='用户验证失败')
+            raise AuthenticationFailed(detail='用户服务验证JWT失败')
+
+        # 检查用户数据是否为空
+        if not user_data:
+            raise NotAuthenticated(detail='无用户数据，请开发者检查用户服务是否有错误逻辑')
+
+        # 反序列化
+        serializer = AuthUserSerializer(data=user_data)
+        if not serializer.is_valid():
+            # 备注：大概率是系统内部错误
+            raise AuthenticationFailed(detail='用户数据反序列化异常，请开发者检查本库的模型层和序列化层是否有错误逻辑')
+        user = serializer.instance
+
+        # 验证用户模型标记，主要用以处理来自服务内部的自定义逻辑（比如安全机制等）。
+        if not user.is_active:
+            # 未激活状态
+            raise AuthenticationFailed(detail='用户未激活或被封禁')
+        if not user.is_authenticated:
+            # 未认证通过状态
+            raise AuthenticationFailed(detail='用户服务内部验证失败')
+
+        # 返回用户信息
+        return user, auth

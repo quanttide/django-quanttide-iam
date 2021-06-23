@@ -8,4 +8,47 @@ class AuthUser(models.Model):
     """
 
     """
-    pass
+    # --- 字段 ---
+    # -- 用户唯一性标记 --
+    user_id = models.CharField(max_length=32, primary_key=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
+
+    # -- 用户权限标记 --
+    # 是否激活
+    is_active = models.BooleanField(default=False)
+    # 是否认证
+    is_authenticated = models.BooleanField(default=False)
+    # 是否匿名
+    is_anonymous = models.BooleanField(default=True)
+    # 是否员工
+    is_staff = models.BooleanField(default=False)
+
+    # --- AuthUserModel必须设置 ---
+    USERNAME_FILED = 'user_id'
+    REQUIRED_FIELDS = ['user_id', 'is_authenticated']
+
+    # --- assert语句 ---
+    if is_authenticated:
+        assert is_active, "未激活账号不可以通过认证"
+    if is_anonymous:
+        # TODO：这条存疑
+        assert is_active and is_authenticated, "匿名用户必须是激活的认证用户"
+    if is_staff:
+        assert is_active and is_authenticated, "员工账号必须是激活的认证用户"
+
+    # --- 设置 ---
+    class Meta:
+        # 不存到数据库
+        # TODO：此设置存疑
+        migrate = False
+
+
+class AuthStaff(models.Model):
+    # 关联认证用户
+    user = models.OneToOneField(AuthUser, on_delete=models.CASCADE)
+
+    # assert语句
+    assert user.is_staff, '非员工账号无法拥有员工认证信息'
+
+    class Meta:
+        migrate = False
