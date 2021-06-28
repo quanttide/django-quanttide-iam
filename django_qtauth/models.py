@@ -25,6 +25,7 @@ class AuthUser(models.Model):
 
     # --- AuthUserModel必须设置 ---
     USERNAME_FILED = 'user_id'
+    # TODO：根据业务逻辑调整
     REQUIRED_FIELDS = ['user_id', 'is_authenticated']
 
     # --- assert语句 ---
