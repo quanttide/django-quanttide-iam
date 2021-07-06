@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 """
+TODO：
+  - 实现一个SecretKey版本的认证类。
+  - 实现一个Staff可访问的认证类。
+
 Ref:
   - https://www.django-rest-framework.org/api-guide/authentication/#custom-authentication
 """
