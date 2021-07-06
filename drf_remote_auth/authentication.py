@@ -13,12 +13,10 @@ from requests.exceptions import HTTPError
 from .serializers import AuthUserSerializer
 
 
-class QtAuthentication(BaseAuthentication):
+class RemoteTokenAuthentication(BaseAuthentication):
     """
-    QtApps的DRF服务的通用Authentication类。
+    DRF框架下基于远端服务器签发的Token实现的Authentication类。
 
-    注意：
-      - 此Auth类为QtApps唯一鉴权类，因此Auth不存在时抛出异常，和官方文档建议返回None的实践不同。
     """
     def authenticate_header(self, request):
         """

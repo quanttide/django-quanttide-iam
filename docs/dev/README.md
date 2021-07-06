@@ -10,6 +10,26 @@
 考虑到这些库的API不统一、功能可能重合或者冲突，还有很多库过时不好维护，且设计出发点和我们不一样，零零散散的库对用户接入也十分不方便，
 在思考很久以后放弃了补充少量插件的计划，而用这个库来打包社区现有方案、提供一个相对完整的支持以上特性的微服务远程鉴权解决方案。
 
+**目前的设计思路还很不清晰，分层设计思路、DRF框架特点、社区已有实现之间的关系不明，服务端的API及交互过程也还没有稳定。**
+
+## 核心机制设计
+
+### 分层设计
+
+1. CAS客户端：主要任务是转发鉴权令牌到负责代理鉴权的CAS服务端。
+2. OpenID Connect客户端：用户鉴权协议。
+3. JWT：鉴权中使用到的Token协议。
+
+### Authentication
+
+基于DRF原生机制，只修改DRF的Authentication类，尽量不修改AuthBackend和AuthMiddleware。
+
+由于DRF支持多个Authentication并列使用（只要一个通过即可），因此这里计划根据输入实现不同的Authentication类用于CAS客户端配置：
+- `RemoteTokenAuthentication`: 输入值为远端服务器签发的Token，不关心具体协议。
+- `SecretKeyAuthentication`: 输入值为`secret_id`和`secret_key`，签名在Authentication类中实现。
+
+
+
 ## 社区现有积累
 
 ### 官方Auth框架
