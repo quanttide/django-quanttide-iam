@@ -1,26 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-TODO：
-  - 实现一个SecretKey版本的认证类。
-  - 实现一个Staff可访问的认证类。
+DRF框架下基于远端服务器签发的Token（比如JWT）实现的Authentication类。
 
-Ref:
-  - https://www.django-rest-framework.org/api-guide/authentication/#custom-authentication
+假设鉴权API判断Token有效性并返回用户鉴权属性。
 """
 
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed, NotAuthenticated
 
-from django_qcloud.api import cloudbase_request_http_api
+import requests
 from requests.exceptions import HTTPError
 
-from .serializers import AuthUserSerializer
+from drf_remote_auth.serializers import AuthUserSerializer
 
 
 class RemoteTokenAuthentication(BaseAuthentication):
     """
-    DRF框架下基于远端服务器签发的Token实现的Authentication类。
-
+    用远程服务鉴权Token的Authentication类。
     """
     def authenticate_header(self, request):
         """
@@ -37,9 +33,12 @@ class RemoteTokenAuthentication(BaseAuthentication):
         """
         return 'Bearer realm="jwt"'
 
+    def request_token(self, method, path, data=None):
+        return requests.request(method, path, data=data)
+
     def authenticate(self, request):
         """
-        自定义验证，调用量潮用户服务验证是否为量潮用户。
+        自定义验证，调用鉴权API验证是否为系统内用户。
 
         标准返回值为`(user, auth)`，异常为`NotAuthenticated`和`AuthenticationFailed`。
         """
@@ -48,11 +47,10 @@ class RemoteTokenAuthentication(BaseAuthentication):
         if not auth:
             raise NotAuthenticated("Authorization为空")
 
-        # 通过用户服务验证JWT接口验证用户身份，成功则按标准格式返回，失败抛出AuthenticationFailed
+        # 通过鉴权API接口验证用户身份，成功则按标准格式返回，失败抛出AuthenticationFailed
         try:
             # 验证成功，返回200
-            # TODO：如果需要强制指定Content-Type才可以通过，修改腾讯云SDK的API使之暴露headers参数。
-            user_data = cloudbase_request_http_api(method='POST', path='/users/jwt-verify', data={"token": auth})
+            user_data = self.request_token(method='POST', path='/users/jwt-verify', data={"token": auth})
         except HTTPError:
             # 验证失败，返回400（Bad Request）
             raise AuthenticationFailed(detail='用户服务验证JWT失败')

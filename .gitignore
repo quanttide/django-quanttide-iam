@@ -1,1 +1,12 @@
+# IDE config
 .idea/
+.vscode/
+
+# database
+*.sqlite3
+
+# env
+.env
+
+# secert key
+*.key
