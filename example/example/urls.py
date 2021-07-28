@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('oidc_provider/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('oidc_client/', include('oidc_client.urls', namespace='oidc_client')),
 ]

@@ -73,22 +73,7 @@ class AccessTokenAuthentication(BaseAuthentication):
       - OAuth2: https://datatracker.ietf.org/doc/html/rfc6749#section-7
     """
     def authenticate(self, request):
-        # request userinfo as recommended in [Section 5.3.1 of OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoRequest)
-        response = requests.get('/token/introspection', headers={
-            'HOST': '',  # TODO
-            'Authorization': request.headers.get('Authorization'),
-        })
-        # suppose userinfo response as recommended in [Section 5.3.2 of OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse)
-        if response.status_code == 200:
-            # validate userinfo response following [Section 5,3,4 of OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponseValidation)
-            pass
-        # suppose error response as recommended by in [Section 5.3.3 of OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoError)
-        elif response.status_code == 401:
-            pass
-        else:
-            # Developer's Note:
-            #   I am not sure whether this exception class is appropriate for this situation.
-            raise ValueError('Status code {status_code} is not a appropriate one for this API.'.format(status_code=response.status_code))
+        pass
 
 
 # ----- Refresh Token -----

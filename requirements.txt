@@ -4,3 +4,5 @@ drf-oidc-auth
 oauthlib~=3.1.0
 requests~=2.25.1
 requests_oauthlib
+authlib~=1.0.0a2
+environs~=9.3.2

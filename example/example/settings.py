@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from Crypto.PublicKey import RSA
+
+from environs import Env
+env = Env()
+env.read_env()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'oauth2_provider',
+    'oidc_client.apps.ClientConfig',
 ]
 
 MIDDLEWARE = [
@@ -133,22 +137,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-
+        'oidc_auth.authentication.JSONWebTokenAuthentication',
+        'oidc_auth.authentication.BearerTokenAuthentication',
     ),
 }
 
-# ----- Django OAuth Toolkit -----
 
-LOGIN_URL = '/admin/login/'
+# ----- drf-oidc-auth -----
 
-OAUTH2_PROVIDER = {
-    "OIDC_ENABLED": True,
-    # https://www.kite.com/python/examples/4914/crypto-load-an-rsa-key-from-a-file
-    # TODO: vaildate whether workable
-    "OIDC_RSA_PRIVATE_KEY": RSA.importKey(open(os.path.join(BASE_DIR, "oidc.key"), "r").read()),
-    "SCOPES": {
-        "openid": "OpenID Connect scope",
-        # ... any other scopes that you use
-    },
-    # ... any other settings you want
+OIDC_AUTH = {
+    'OIDC_ENDPOINT': os.environ['OIDC_DEFAULT_ENDPOINT'],
 }
