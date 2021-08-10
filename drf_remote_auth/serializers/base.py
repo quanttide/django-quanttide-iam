@@ -2,7 +2,7 @@
 
 from rest_framework.serializers import ModelSerializer
 
-from .models import AuthUser, AuthStaff
+from drf_remote_auth.models import AuthUser
 
 
 class AuthUserSerializer(ModelSerializer):

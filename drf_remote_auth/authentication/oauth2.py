@@ -74,10 +74,3 @@ class AccessTokenAuthentication(BaseAuthentication):
     """
     def authenticate(self, request):
         pass
-
-
-# ----- Refresh Token -----
-
-class RefreshTokenAuthentication(BaseAuthentication):
-    def authenticate(self, request):
-        pass

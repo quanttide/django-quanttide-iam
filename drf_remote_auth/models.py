@@ -40,14 +40,3 @@ class AuthUser(models.Model):
         # 不存到数据库
         # TODO：此设置存疑
         migrate = False
-
-
-class AuthStaff(models.Model):
-    # 关联认证用户
-    user = models.OneToOneField(AuthUser, on_delete=models.CASCADE)
-
-    # assert语句
-    assert user.is_staff, '非员工账号无法拥有员工认证信息'
-
-    class Meta:
-        migrate = False

@@ -1,12 +1,40 @@
 # -*- coding: utf-8 -*-
 """
-About `AccessTokenAuthentication` class:
-
-    Validate the access token by the coordination with the authentication server.
-    [Section 5.3 of OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo) requires that
-    > The Access Token obtained from an OpenID Connect Authentication Request MUST be sent as a Bearer Token.
-    > It is RECOMMENDED that the request use the HTTP GET method and the Access Token be sent using the Authorization header field.
-
-    Ref:
-      - OpenID Connect: https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
+Authentication class for OpenID Connect Protocol.
 """
+
+from rest_framework.authentication import BaseAuthentication
+
+from drf_remote_auth.models import AuthUser
+from drf_remote_auth.serializers import AuthUserSerializer
+
+
+# ----- Access Grant Type -----
+
+class OidcAuthCodeAuthentication(BaseAuthentication):
+    def authenticate(self, request):
+        pass
+
+
+# ----- Access Token and ID Token -----
+
+class OidcAccessTokenAuthentication(BaseAuthentication):
+    def authenticate(self, request):
+        # 获取AccessToken
+        tokens = self.get_oidc_tokens_from_authorization_header(request)
+        # 反序列化
+        serializer = AuthUserSerializer(data=tokens)
+        # 验证数据
+        serializer.is_valid(raise_exception=True)
+        # 返回值
+        user = AuthUser(**serializer.validated_data)
+        auth = tokens['access_token']
+        return user, auth
+
+    def get_oidc_tokens_from_authorization_header(self, request):
+        return ''
+
+
+class OidcIDTokenAuthentication(BaseAuthentication):
+    def authenticate(self, request):
+        pass
