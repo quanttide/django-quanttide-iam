@@ -12,11 +12,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-from environs import Env
-env = Env()
-env.read_env()
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -36,23 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
+    'drf_remote_auth',
+
     'oidc_client.apps.ClientConfig',
+    'token_provider.apps.TokenProviderConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -137,14 +129,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oidc_auth.authentication.JSONWebTokenAuthentication',
-        'oidc_auth.authentication.BearerTokenAuthentication',
     ),
-}
-
-
-# ----- drf-oidc-auth -----
-
-OIDC_AUTH = {
-    'OIDC_ENDPOINT': os.environ['OIDC_DEFAULT_ENDPOINT'],
+    'UNAUTHENTICATED_USER': None,
 }
