@@ -121,7 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # ----- REST Framework -----
 
 REST_FRAMEWORK = {
@@ -132,3 +131,7 @@ REST_FRAMEWORK = {
     ),
     'UNAUTHENTICATED_USER': None,
 }
+
+# ----- drf-remote-auth -----
+
+AUTH_USER_MODEL = 'drf_remote_auth.models.AuthUser'

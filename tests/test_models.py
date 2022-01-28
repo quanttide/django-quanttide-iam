@@ -22,7 +22,13 @@ class AuthUserTestCase(TestCase):
 
 
 class CustomAuthUserTestCase(TestCase):
+    model_class = CustomAuthUser
+
+    def test_model_fields(self):
+        # ref: https://stackoverflow.com/questions/3106295/django-get-list-of-model-fields
+        model_fields = {f.name for f in self.model_class._meta.get_fields()}
+        self.assertEqual({'user_id', 'is_staff', 'is_superuser'}, model_fields)
+
     def test_init(self):
         auth_user = CustomAuthUser(user_id=uuid.uuid4())
-        # TODO: 未知原因没有迁移。
         auth_user.save()

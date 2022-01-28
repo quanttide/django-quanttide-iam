@@ -5,14 +5,16 @@ from django.db import models
 
 class AbstractAuthUser(models.Model):
     """
-    鉴权用户的抽象类
+    鉴权用户的抽象类。
+
+    默认为匿名用户，user_id为空。
 
     用法：
     - 资源服务直接使用此抽象类的继承。
     - 鉴权服务继承此抽象类实现自定义鉴权用户类。
     """
     # -- 用户唯一性标记 --
-    user_id = models.UUIDField(primary_key=True)
+    user_id = models.UUIDField(default=None, primary_key=True)
 
     # -- 用户权限标记 --
     # 是否匿名
@@ -28,7 +30,7 @@ class AbstractAuthUser(models.Model):
 
     # AuthUserModel必须设置
     USERNAME_FILED = 'user_id'
-    REQUIRED_FIELDS = ['user_id', 'is_anonymous', 'is_active', 'is_authenticated', 'is_staff', 'is_superuser']
+    REQUIRED_FIELDS = ['user_id']
 
     class Meta:
         abstract = True
@@ -50,6 +52,8 @@ class AbstractAuthUser(models.Model):
 class AuthUser(AbstractAuthUser):
     """
     鉴权用户。用于鉴权客户端（即资源服务）。
+
+    默认为匿名用户。
     """
     class Meta:
         # 不存到数据库
