@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     ...
 ]
 
-AUTH_USER_MODEL = 'drf_remote_auth.models.AuthUser'
+AUTH_USER_MODEL = 'drf_remote_auth.AuthUser'
 ```
 
 ## Usage 
