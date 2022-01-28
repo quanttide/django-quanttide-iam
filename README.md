@@ -30,9 +30,13 @@ Add `drf_remote_auth` to your `INSTALLED_APPS` in Django `settings.py`.
 ```python
 INSTALLED_APPS = [
     ...
+    'rest_framework',
+    ...
     'drf_remote_auth',
     ...
 ]
+
+AUTH_USER_MODEL = 'drf_remote_auth.models.AuthUser'
 ```
 
 ## Usage 
@@ -40,3 +44,11 @@ INSTALLED_APPS = [
 ### Resource Server
 
 ### Authorization Server 
+
+## License 
+
+This package uses [BSD-3 License](LICENSE)
+
+## Changelog 
+
+[CHANGELOG](CHANGELOG.md)
