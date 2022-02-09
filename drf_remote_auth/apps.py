@@ -3,5 +3,5 @@
 from django.apps import AppConfig
 
 
-class DjangoQtAuth(AppConfig):
+class DrfRemoteAuthAppConfig(AppConfig):
     name = 'drf_remote_auth'

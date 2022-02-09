@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Authentication class for OpenID Connect Protocol.
+
+Ref:
+  -
 """
 
 from rest_framework.authentication import BaseAuthentication

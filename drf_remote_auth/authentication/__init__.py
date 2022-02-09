@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
 """
+Authentication classes for Django REST Framework.
+
 Ref:
   - https://www.django-rest-framework.org/api-guide/authentication/#custom-authentication
 """
