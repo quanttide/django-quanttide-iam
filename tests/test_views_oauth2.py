@@ -16,3 +16,7 @@ class AuthorizationViewTestCase(TestCase):
 class TokenTestCase(TestCase):
     def test_create_token_for_password_grant(self):
         pass
+
+
+class RevokeTokenTestCase(TestCase):
+    pass

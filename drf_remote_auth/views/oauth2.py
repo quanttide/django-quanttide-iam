@@ -25,4 +25,10 @@ class TokenView(APIView):
       - Resource Owner Password Credentials Grant: 输入用户（OAuth Resource Owner）的username和password。
       - Client Credentials Grant: 输入资源服务（OAuth Client）的client_id和client_secret。
     """
-    pass
+    def post(self, request):
+        pass
+
+
+class RevokeTokenView(APIView):
+    def post(self, request):
+        pass
