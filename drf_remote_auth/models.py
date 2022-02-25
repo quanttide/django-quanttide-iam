@@ -8,7 +8,7 @@
 from django.db import models
 
 
-class AbstractUser(models.Model):
+class AbstractAuthUser(models.Model):
     """
     鉴权用户的抽象类。
 
@@ -26,16 +26,14 @@ class AbstractUser(models.Model):
     is_anonymous = models.BooleanField(default=True)
     # 是否激活
     is_active = models.BooleanField(default=False)
-    # 是否认证
-    is_authenticated = models.BooleanField(default=False)
     # 是否员工
     is_staff = models.BooleanField(default=False)
     # 是否系统管理员
     is_superuser = models.BooleanField(default=False)
 
     # AuthUserModel必须设置
-    USERNAME_FILED = 'user_id'
-    REQUIRED_FIELDS = ['user_id']
+    USERNAME_FILED = 'id'
+    REQUIRED_FIELDS = ['id']
 
     class Meta:
         abstract = True
@@ -46,15 +44,17 @@ class AbstractUser(models.Model):
         # TODO: `assert`用法不符合Google Style规范。
         if self.is_anonymous:
             assert not self.is_active and not self.is_authenticated, "匿名用户等同于未认证用户"
-        if self.is_authenticated:
-            assert not self.is_anonymous and self.is_active, "未激活账号不可以通过认证"
         if self.is_staff:
             assert self.is_authenticated, "员工账号必须是激活的认证用户"
         if self.is_superuser:
             assert self.is_staff, "超级管理员必须是员工账号"
 
+    @property
+    def is_authenticated(self):
+        return self.is_active
 
-class User(AbstractUser):
+
+class AuthUser(AbstractAuthUser):
     """
     鉴权用户。用于鉴权客户端（即资源服务）。
 
@@ -63,3 +63,12 @@ class User(AbstractUser):
     class Meta:
         # 不存到数据库
         managed = False
+
+
+class User(AbstractAuthUser):
+    """
+    用户。用于鉴权服务端。
+    """
+    PHONE_NUMBER_FIELD = 'phone_number'
+    EMAIL_FIELD = 'email'
+    PASSWORD_FIELD = 'password'
