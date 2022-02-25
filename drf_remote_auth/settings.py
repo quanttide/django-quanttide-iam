@@ -2,7 +2,7 @@
 
 
 DEFAULT_SETTINGS = {
-    'OIDC_ENDPOINT': '',
+    'IDTOKEN_KEY': None,
 }
 
 

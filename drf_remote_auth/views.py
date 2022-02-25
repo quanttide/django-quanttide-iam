@@ -5,5 +5,6 @@
 from rest_framework.views import APIView
 
 
-class LoginView(APIView):
-    pass
+class IDTokenProviderView(APIView):
+    def post(self, request):
+        pass
