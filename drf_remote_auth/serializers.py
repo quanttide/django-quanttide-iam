@@ -1,11 +1,12 @@
-# -*- coding: utf-8 -*-
+"""
 
+"""
+
+from django.contrib.auth import get_user_model
 from rest_framework.serializers import ModelSerializer
 
-from drf_remote_auth.models import AuthUser
 
-
-class AuthUserSerializer(ModelSerializer):
+class UserSerializer(ModelSerializer):
     class Meta:
-        model = AuthUser
+        model = get_user_model()
         fields = "__all__"

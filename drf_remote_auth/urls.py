@@ -12,7 +12,7 @@ Endpoint配置
 from django.urls import path
 
 from drf_remote_auth.settings import drf_remote_auth_settings
-from drf_remote_auth.views.oauth2 import *
+from docs.depreciated.views.oauth2 import *
 
 
 urlpatterns = []

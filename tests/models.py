@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from drf_remote_auth.models import AbstractAuthUser
+from drf_remote_auth.models import AbstractUser
 
 
-class CustomAuthUser(AbstractAuthUser):
+class CustomUser(AbstractUser):
     """
     property属性会覆盖Field属性。
     """

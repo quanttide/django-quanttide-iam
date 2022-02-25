@@ -5,15 +5,15 @@ import uuid
 from django.test import TestCase
 from django.db.utils import OperationalError
 
-from drf_remote_auth.models import AuthUser
-from .models import CustomAuthUser
+from drf_remote_auth.models import User
+from .models import CustomUser
 
 
 # ----- Default AuthUser for Resource Server -----
 
 class AuthUserTestCase(TestCase):
     def test_init(self):
-        auth_user = AuthUser(user_id=uuid.uuid4())
+        auth_user = User(user_id=uuid.uuid4())
         with self.assertRaises(OperationalError) as e:
             auth_user.save()
 
@@ -30,5 +30,5 @@ class CustomAuthUserTestCase(TestCase):
         self.assertEqual({'user_id', 'is_staff', 'is_superuser'}, model_fields)
 
     def test_init(self):
-        auth_user = CustomAuthUser(user_id=uuid.uuid4())
+        auth_user = CustomUser(user_id=uuid.uuid4())
         auth_user.save()

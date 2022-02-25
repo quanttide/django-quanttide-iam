@@ -11,9 +11,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="AuthUser",
+            name="User",
             fields=[
-                ('user_id', models.UUIDField(primary_key=True)),
+                ('id', models.UUIDField(primary_key=True)),
                 ('is_anonymous', models.BooleanField(default=True)),
                 ('is_active', models.BooleanField(default=False)),
                 ('is_authenticated', models.BooleanField(default=False)),

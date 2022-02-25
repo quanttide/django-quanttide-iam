@@ -8,7 +8,6 @@ Contributors:
 """
 
 from django.test import SimpleTestCase
-from drf_remote_auth.validators import DRFIntrospectTokenValidator
 
 
 class DRFIntrospectTokenValidatorTestCase(SimpleTestCase):

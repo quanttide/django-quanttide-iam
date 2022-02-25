@@ -5,9 +5,9 @@ from rest_framework.test import APIRequestFactory
 
 from rest_framework.decorators import api_view, authentication_classes
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK, HTTP_401_UNAUTHORIZED
+from rest_framework.status import HTTP_401_UNAUTHORIZED
 
-from drf_remote_auth.authentication.oauth2 import LegacyApplicationAuthentication, AccessTokenAuthentication
+from docs.depreciated.authentication.oauth2 import LegacyApplicationAuthentication, AccessTokenAuthentication
 
 
 @api_view(['GET'])

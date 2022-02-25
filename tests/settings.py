@@ -16,3 +16,5 @@ DATABASES = {
         "NAME": 'db.sqlite3',
     }
 }
+
+AUTH_USER_MODEL = 'drf_remote_auth.AuthUser'
