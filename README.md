@@ -29,7 +29,7 @@ Besides, this package also aims to provide some methods to adapt service mesh fr
 Install with `pip`.
 
 ```shell
- pip install drf-remote-auth -i  https://quanttide-pypi.pkg.coding.net/qtapps-django/drf-remote-auth/simple
+pip install drf-remote-auth
 ```
 
 Add `drf_remote_auth` to your `INSTALLED_APPS` in Django `settings.py`. 
