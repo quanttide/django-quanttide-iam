@@ -13,7 +13,7 @@ class AccessTokenAuthentication(BaseAuthentication):
         access_token = get_authorization_header(request).split(' ')[1]
         serializer = AccessTokenSerializer(data=access_token)
         if serializer.is_valid(raise_exception=True):
-            user = serializer.user
+            user = serializer.instance
         return user, access_token
 
 
@@ -23,5 +23,5 @@ class IDTokenAuthentication(BaseAuthentication):
         id_token = get_authorization_header(request).split(' ')[1]
         serializer = IDTokenSerializer(data=id_token)
         if serializer.is_valid(raise_exception=True):
-            user = serializer.user
+            user = serializer.instance
         return user, id_token

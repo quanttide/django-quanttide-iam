@@ -1,11 +1,7 @@
 """
 用户模型类
 
-重新定义激活用户和匿名用户。
-Django官方的匿名用户为`is_active=False`、`is_anonymous=True`。
-我们重新定义为`is_active=True`，并把`is_active`定义为失效用户。
-
-默认创建一个匿名用户。
+默认创建一个匿名用户。重新定义匿名用户为ID非空。
 """
 import uuid
 
@@ -20,8 +16,6 @@ class AbstractAuthUser(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
 
     # -- 用户权限标记 --
-    # 是否激活
-    is_active = models.BooleanField(default=True)
     # 是否认证
     is_authenticated = models.BooleanField(default=False)
     # 是否员工
@@ -51,7 +45,7 @@ class AbstractAuthUser(models.Model):
 
         匿名用户定义为未通过鉴权的激活用户
         """
-        return self.is_active and not self.is_authenticated
+        return not self.is_authenticated
 
 
 class AuthUser(AbstractAuthUser):
