@@ -8,8 +8,8 @@ Ref:
 
 from rest_framework.authentication import BaseAuthentication
 
-from drf_remote_auth.models import AuthUser
-from drf_remote_auth.serializers import AuthUserSerializer
+from django_qtcloud_idam.models import AuthUser
+from django_qtcloud_idam.serializers import AuthUserSerializer
 
 
 # ----- Access Grant Type -----

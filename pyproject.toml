@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61", "setuptools.scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# name it as your package name
+name = "django-qtcloud-idam"
+# semetric versions
+version = "0.1.0-alpha.1"
+# describe the package within one sentence
+description = "量潮云身份与访问管理平台Django服务端SDK"
+authors = [{ name = "QuantTide Inc.", email = "cloud@quanttide.com" }]
+license = { text = "Apache 2.0" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: Django",
+    "License :: OSI Approved :: Apache Software License",
+    "Development Status :: 2 - Pre-Alpha",
+]
+requires-python = '>=3'
+dependencies = [
+    "django>=2.0.0",
+    "djangorestframework>=3.0.0",
+    "authlib>=1.1.0"
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools]
+packages = ["django_qtcloud_idam"]

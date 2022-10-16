@@ -5,24 +5,32 @@ import uuid
 from django.test import TestCase
 from django.db.utils import OperationalError
 
-from drf_remote_auth.models import User
+from django_qtcloud_idam.models import AuthUser
 from .models import CustomUser
 
 
-# ----- Default AuthUser for Resource Server -----
-
 class AuthUserTestCase(TestCase):
+    """
+    Default AuthUser for Resource Server
+    """
     def test_init(self):
-        auth_user = User(user_id=uuid.uuid4())
-        with self.assertRaises(OperationalError) as e:
-            auth_user.save()
-
-
-# ----- Custom AuthUser for Authorization Server -----
+        # 未激活用户
+        inactive_user = AuthUser(is_active=False)
+        # 匿名用户
+        anonymous_user = AuthUser()
+        # 鉴权用户
+        auth_user = AuthUser(id=uuid.uuid4(), is_authenticated=True)
+        # 员工
+        staff = AuthUser(id=uuid.uuid4(), is_authenticated=True, is_staff=True)
+        # 系统管理员
+        super_user = AuthUser(id=uuid.uuid4(), is_authenticated=True, is_staff=True, is_superuser=True)
 
 
 class CustomAuthUserTestCase(TestCase):
-    model_class = CustomAuthUser
+    """
+    Custom AuthUser for Authorization Server
+    """
+    model_class = CustomUser
 
     def test_model_fields(self):
         # ref: https://stackoverflow.com/questions/3106295/django-get-list-of-model-fields

@@ -11,7 +11,7 @@ from rest_framework.exceptions import AuthenticationFailed, NotAuthenticated
 import requests
 from requests.exceptions import HTTPError
 
-from drf_remote_auth.serializers import AuthUserSerializer
+from django_qtcloud_idam.serializers import AuthUserSerializer
 
 
 class RemoteTokenAuthentication(BaseAuthentication):

@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'drf_remote_auth',
+    'django_qtcloud_idam',
 
     'oidc_client.apps.ClientConfig',
     'token_provider.apps.TokenProviderConfig',
@@ -81,7 +81,7 @@ DATABASES = {
 
 
 # Auth User
-# AUTH_USER_MODEL = 'drf_remote_auth.AuthUser'  # Default: 'auth.User'
+# AUTH_USER_MODEL = 'django_qtcloud_idam.AuthUser'  # Default: 'auth.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -132,6 +132,6 @@ REST_FRAMEWORK = {
     'UNAUTHENTICATED_USER': None,
 }
 
-# ----- drf-remote-auth -----
+# ----- django-qtcloud-idam -----
 
-AUTH_USER_MODEL = 'drf_remote_auth.models.AuthUser'
+AUTH_USER_MODEL = 'django_qtcloud_idam.models.AuthUser'

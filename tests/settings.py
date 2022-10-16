@@ -6,7 +6,7 @@ SECRET_KEY = 'fake-key'
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
-    'drf_remote_auth',
+    'django_qtcloud_idam',
     'tests',
 ]
 
@@ -17,4 +17,4 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'drf_remote_auth.AuthUser'
+AUTH_USER_MODEL = 'django_qtcloud_idam.AuthUser'

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from drf_remote_auth.models import AbstractUser
+from django_qtcloud_idam.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
