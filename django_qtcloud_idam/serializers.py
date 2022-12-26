@@ -36,7 +36,7 @@ class AuthUserSerializer(serializers.ModelSerializer):
     """
 
     class Meta:
-        model = get_user_model() or AuthUser
+        model = AuthUser
         fields = ['id', 'is_active', 'is_authenticated', 'is_staff', 'is_superuser']
         extra_kwargs = {
             # 开发者笔记：

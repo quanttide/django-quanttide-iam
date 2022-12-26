@@ -26,7 +26,7 @@ class RemoteTokenAuthentication(BaseAuthentication):
           A string to be displayed to users so they know which username and
           password to use. This string should contain at least the name of
           the host performing the authentication and might additionally
-          indicate the collection of users who might have access. An example
+          indicate the collection of users who might have access. An drf_example
           might be "registered_users@gotham.news.com".
 
         PS：暂未搞清楚`WWW-Authenticate`及`realm`参数的意义，遵循官方标准走。
