@@ -3,7 +3,7 @@
 """
 
 from django.contrib.auth import get_user_model
-from django_qtcloud_idam.models import AuthUser
+from django_quanttide_idam.models import AuthUser
 from rest_framework import serializers
 
 from authlib.oidc.core.claims import UserInfo
@@ -17,8 +17,8 @@ class AuthUserSerializer(serializers.ModelSerializer):
 
     匿名用户序列化
     -----
-    >>> from django_qtcloud_idam.models import AuthUser
-    >>> from django_qtcloud_idam.serializers import AuthUserSerializer
+    >>> from django_quanttide_idam.models import AuthUser
+    >>> from django_quanttide_idam.serializers import AuthUserSerializer
     >>> anonymous_user = AuthUser()
     >>> serializer = AuthUserSerializer()
     >>> serializer.data
@@ -27,8 +27,8 @@ class AuthUserSerializer(serializers.ModelSerializer):
     认证用户序列化
     -----
     >>> import uuid
-    >>> from django_qtcloud_idam.models import AuthUser
-    >>> from django_qtcloud_idam.serializers import AuthUserSerializer
+    >>> from django_quanttide_idam.models import AuthUser
+    >>> from django_quanttide_idam.serializers import AuthUserSerializer
     >>> user = AuthUser(id=uuid.uuid4(), is_authenticated=True)
     >>> serializer = AuthUserSerializer(user)
     >>> serializer.data

@@ -5,7 +5,7 @@ import uuid
 from django.test import TestCase
 from django.db.utils import OperationalError
 
-from django_qtcloud_idam.models import AuthUser
+from django_quanttide_idam.models import AuthUser
 from .models import CustomUser
 
 

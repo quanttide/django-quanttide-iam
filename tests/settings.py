@@ -6,7 +6,7 @@ SECRET_KEY = 'fake-key'
 
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
-    'django_qtcloud_idam',
+    'django_quanttide_idam',
     'tests',
 ]
 
@@ -17,4 +17,4 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'django_qtcloud_idam.AuthUser'
+AUTH_USER_MODEL = 'django_quanttide_idam.AuthUser'

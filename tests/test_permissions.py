@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from django_qtcloud_idam.permissions import *
+from django_quanttide_idam.permissions import *
 
 
 class IsAdminUserOrReadOnlyTestCase(TestCase):

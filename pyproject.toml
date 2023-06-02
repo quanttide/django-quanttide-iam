@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 # name it as your package name
-name = "django-qtcloud-idam"
+name = "django-quanttide-idam"
 # semetric versions
 version = "0.1.0-alpha.1"
 # describe the package within one sentence
-description = "量潮云身份与访问管理平台Django服务端SDK"
-authors = [{ name = "QuantTide Inc.", email = "cloud@quanttide.com" }]
+description = "量潮IdAM Django SDK"
+authors = [{ name = "QuantTide Inc.", email = "opensource@quanttide.com" }]
 license = { text = "Apache 2.0" }
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -29,4 +29,4 @@ file = "README.md"
 content-type = "text/markdown"
 
 [tool.setuptools]
-packages = ["django_qtcloud_idam"]
+packages = ["django_quanttide_idam"]

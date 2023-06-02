@@ -6,7 +6,7 @@ from django.test import TestCase
 
 from rest_framework.status import HTTP_401_UNAUTHORIZED
 
-from django_qtcloud_idam.authentication import AccessTokenAuthentication, IDTokenAuthentication
+from django_quanttide_idam.authentication import AccessTokenAuthentication, IDTokenAuthentication
 from tests.data import TestDataMixin
 
 

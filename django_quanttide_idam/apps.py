@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class DrfRemoteAuthAppConfig(AppConfig):
-    name = 'django_qtcloud_idam'
+    name = 'django_quanttide_idam'

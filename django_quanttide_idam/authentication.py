@@ -4,7 +4,7 @@
 
 from rest_framework.authentication import BaseAuthentication, get_authorization_header
 
-from django_qtcloud_idam.serializers import IDTokenSerializer, AccessTokenSerializer
+from django_quanttide_idam.serializers import IDTokenSerializer, AccessTokenSerializer
 
 
 class AccessTokenAuthentication(BaseAuthentication):

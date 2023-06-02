@@ -1,6 +1,4 @@
-# 量潮IdAM云Django服务端SDK
-
-量潮云身份和访问管理平台Django服务端SDK
+# 量潮IdAM Django SDK
 
 ## Installation 
 
@@ -19,7 +17,7 @@ INSTALLED_APPS = [
     ...,
     'rest_framework',
     ...,
-    'django_qtcloud_idam',
+    'django_quanttide_idam',
     ...
 ]
 ```
@@ -31,7 +29,7 @@ INSTALLED_APPS = [
 ```python
 # settings.py
 
-AUTH_USER_MODEL = 'django_qtcloud_idam.AuthUser'
+AUTH_USER_MODEL = 'django_quanttide_idam.AuthUser'
 ```
 
 修改REST Framework的默认Auth和Permission类
@@ -42,11 +40,11 @@ AUTH_USER_MODEL = 'django_qtcloud_idam.AuthUser'
 REST_FRAMEWORK = {
     ...,
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'django_qtcloud_idam.authentication.IDTokenAuthentication',
+        'django_quanttide_idam.authentication.IDTokenAuthentication',
     ],
     ...,
     'DEFAULT_PERMISSION_CLASSES': [
-        'django_qtcloud_idam.permissions.IsAdminUserOrIsAuthenticatedReadOnly',
+        'django_quanttide_idam.permissions.IsAdminUserOrIsAuthenticatedReadOnly',
     ],
 }
 ```

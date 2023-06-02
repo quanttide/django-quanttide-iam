@@ -3,7 +3,7 @@
 """
 from rest_framework.test import APIRequestFactory
 
-from django_qtcloud_idam.models import AuthUser
+from django_quanttide_idam.models import AuthUser
 
 
 class TestDataMixin:
