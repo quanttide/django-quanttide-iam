@@ -5,10 +5,10 @@
 Install the package with `pip`.
 
 ```shell
-pip install django-qtcloud-idam
+pip install django-quanttide-idam
 ```
 
-Add `django_qtcloud_idam` to your `INSTALLED_APPS` in Django `settings.py`. 
+Add `django_quanttide_idam` to your `INSTALLED_APPS` in Django `settings.py`. 
 
 ```python
 # settings.py
@@ -51,7 +51,7 @@ REST_FRAMEWORK = {
 
 ## License 
 
-This package uses [BSD-3 License](LICENSE)
+This package uses [Apache 2.0 License](LICENSE)
 
 ## Changelog 
 
