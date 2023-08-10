@@ -6,7 +6,7 @@ from django.test import TestCase
 from django.db.utils import OperationalError
 
 from django_quanttide_idam.models import AuthUser
-from .models import CustomUser
+from tests.models import CustomUser
 
 
 class AuthUserTestCase(TestCase):

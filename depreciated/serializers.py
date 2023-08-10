@@ -18,7 +18,7 @@ class AuthUserSerializer(serializers.ModelSerializer):
     匿名用户序列化
     -----
     >>> from django_quanttide_idam.models import AuthUser
-    >>> from django_quanttide_idam.serializers import AuthUserSerializer
+    >>> from django_quanttide_idam.users import AuthUserSerializer
     >>> anonymous_user = AuthUser()
     >>> serializer = AuthUserSerializer()
     >>> serializer.data
@@ -28,7 +28,7 @@ class AuthUserSerializer(serializers.ModelSerializer):
     -----
     >>> import uuid
     >>> from django_quanttide_idam.models import AuthUser
-    >>> from django_quanttide_idam.serializers import AuthUserSerializer
+    >>> from django_quanttide_idam.users import AuthUserSerializer
     >>> user = AuthUser(id=uuid.uuid4(), is_authenticated=True)
     >>> serializer = AuthUserSerializer(user)
     >>> serializer.data
@@ -43,7 +43,7 @@ class AuthUserSerializer(serializers.ModelSerializer):
             #  - 模型层字段editable=True时，空序列化过滤此字段，因此必须关闭此选项。暂未找到具体源码位置。
             #  - format=hex可以以32位字符串格式显示数据。
             # 'id': {'format': 'hex'},
-            #  DRF官方文档：Django 2.1起BooleanField的default=False，serializers.BooleanField同样设置default=True无效，设置initial=True对空序列化有效。
+            #  DRF官方文档：Django 2.1起BooleanField的default=False，users.BooleanField同样设置default=True无效，设置initial=True对空序列化有效。
             #  实测结果：initial参数对于空序列化（相当于空表单）有效，default对于序列化且partial_update = False时字段无参数有效。
             #  分析源码：空序列化调用Serializer的get_initial方法，其调用Field的get_initial方法读取设置的initial参数。
             #  由于这里使用空序列化为匿名用户、序列化为认证用户，请开发者遵守上述方式设置。
