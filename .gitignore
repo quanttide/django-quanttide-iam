@@ -168,7 +168,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+depreciated/docs/_build/
 
 # PyBuilder
 .pybuilder/
