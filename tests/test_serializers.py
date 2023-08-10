@@ -2,13 +2,12 @@
 
 """
 from uuid import uuid4
-import doctest
 
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
 from django_quanttide_idam.models import AuthUser
-from django_quanttide_idam.serializers import AuthUserSerializer, IDTokenSerializer, AccessTokenSerializer
+from depreciated.serializers import AuthUserSerializer, IDTokenSerializer, AccessTokenSerializer
 
 __test__ = {
     "AuthUserSerializer": AuthUserSerializer

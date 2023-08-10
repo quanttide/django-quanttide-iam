@@ -4,9 +4,7 @@
 
 from django.test import TestCase
 
-from rest_framework.status import HTTP_401_UNAUTHORIZED
-
-from django_quanttide_idam.authentication import AccessTokenAuthentication, IDTokenAuthentication
+from depreciated.authentication import AccessTokenAuthentication
 from tests.data import TestDataMixin
 
 

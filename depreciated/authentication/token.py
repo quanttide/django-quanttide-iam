@@ -11,7 +11,7 @@ from rest_framework.exceptions import AuthenticationFailed, NotAuthenticated
 import requests
 from requests.exceptions import HTTPError
 
-from django_quanttide_idam.serializers import AuthUserSerializer
+from depreciated.serializers import AuthUserSerializer
 
 
 class RemoteTokenAuthentication(BaseAuthentication):
