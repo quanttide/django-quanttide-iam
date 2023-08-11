@@ -9,7 +9,7 @@ Ref:
 from rest_framework.authentication import BaseAuthentication
 
 from django_quanttide_idam.models import AuthUser
-from depreciated.serializers import AuthUserSerializer
+from django_quanttide_idam.serializers.serializers import AuthUserSerializer
 
 
 # ----- Access Grant Type -----

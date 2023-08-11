@@ -7,7 +7,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 
 from django_quanttide_idam.models import AuthUser
-from depreciated.serializers import AuthUserSerializer, IDTokenSerializer, AccessTokenSerializer
+from django_quanttide_idam.serializers.serializers import AuthUserSerializer, IDTokenSerializer, AccessTokenSerializer
 
 __test__ = {
     "AuthUserSerializer": AuthUserSerializer

@@ -4,7 +4,7 @@
 
 from django.test import TestCase
 
-from depreciated.authentication import AccessTokenAuthentication
+from django_quanttide_idam.authentication import AccessTokenAuthentication
 from tests.data import TestDataMixin
 
 
