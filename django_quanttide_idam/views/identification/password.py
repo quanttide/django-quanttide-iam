@@ -36,7 +36,7 @@ class PasswordSignUpView(APIView):
         'mobile': '18888888888',
         'password': 'hashed_password',
         'password2': 'hashed_password',
-        'vcode': '123456',
+        'verification_code': '123456',
     }
     ```
     """
@@ -48,5 +48,3 @@ class PasswordSignUpView(APIView):
             return Response(data=serializer.data)
         else:
             return Response(data=form.errors, status=status.HTTP_401_UNAUTHORIZED)
-
-

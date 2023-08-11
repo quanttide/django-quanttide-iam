@@ -12,13 +12,13 @@ class VCodeLoginForm(forms.ModelForm, VCodeValidationMixin):
 
     class Meta:
         model = User
-        fields = ['phone_number', 'vcode']
+        fields = ['phone_number', 'verification_code']
         exclude = ['phone_number']  # bugfix: remove the model field to redefine
 
     def clean(self):
         cleaned_data = super().clean()
         # 验证验证码
-        self.validate_vcode(cleaned_data['vcode'])
+        self.validate_vcode(cleaned_data['verification_code'])
         return cleaned_data
 
     def save(self, commit=True):

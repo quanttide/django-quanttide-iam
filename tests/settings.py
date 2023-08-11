@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
-
-import os
+"""
+Django settings for testcases.
+"""
 
 SECRET_KEY = 'fake-key'
 
@@ -17,4 +17,4 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'django_quanttide_idam.AuthUser'
+AUTH_USER_MODEL = 'django_quanttide_idam.User'

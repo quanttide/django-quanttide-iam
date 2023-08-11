@@ -11,13 +11,13 @@
   - 以测试驱动开发（TDD）为导向，产品/架构和开发/测试应当合作确认单元测试的覆盖要点，并使用自动化测试工具完善自动构建（CI）流程。
 """
 
-from django_tenants.test.cases import TenantTestCase
+from django.test import TestCase
 import unittest
 
-from users.models.user import User
+from django_quanttide_idam.models import User
 
 
-class UserTestCase(TenantTestCase):
+class UserTestCase(TestCase):
     def test_set_unusable_password(self):
         """
         首次设置不可用密码
@@ -76,7 +76,7 @@ class UserTestCase(TenantTestCase):
         pass
 
 
-class UserManagerTestCase(TenantTestCase):
+class UserManagerTestCase(TestCase):
     """
     用户管理类测试
 

@@ -8,10 +8,10 @@ class PasswordSignUpFormTestCase(TenantTestCase):
     form_class = PasswordSignUpForm
 
     def setUp(self):
-        self.signup_data = {'phone_number': '19999999999', 'vcode': '123456', 'password': 'ge34ttgxt43',
+        self.signup_data = {'phone_number': '19999999999', 'verification_code': '123456', 'password': 'ge34ttgxt43',
                             'password2': 'ge34ttgxt43'}  #
         # 设置缓存模拟验证码发送
-        cache.set('+86' + self.signup_data['phone_number'], self.signup_data['vcode'])
+        cache.set('+86' + self.signup_data['phone_number'], self.signup_data['verification_code'])
 
     def test_is_valid(self):
         form = self.form_class(self.signup_data)

@@ -20,6 +20,6 @@ app_name = 'django_quanttide_idam'
 urlpatterns = [
     path('signup/', PasswordSignUpView.as_view(), name='password-sign-up'),
     path('login/', PasswordLoginView.as_view(), name='password-login'),
-    path('login-vcode/', VCodeLoginView.as_view(), name='vcode-login'),
+    path('login-verification_code/', VCodeLoginView.as_view(), name='verification_code-login'),
     # path('public-key/', PublicKeyView.as_view(), name='public-key'),
 ]

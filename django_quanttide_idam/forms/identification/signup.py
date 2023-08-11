@@ -1,21 +1,21 @@
 from django import forms
 
-from users.models import User
+from django.contrib.auth import get_user_model
 from .mixin import VCodeValidationMixin
 
 
 class PasswordSignUpForm(forms.ModelForm, VCodeValidationMixin):
     password2 = forms.CharField(max_length=128)
-    vcode = forms.CharField(max_length=6)
+    verification_code = forms.CharField(max_length=6)
 
     class Meta:
-        model = User
-        fields = ['phone_number', 'password', 'password2', 'vcode']
+        model = get_user_model()
+        fields = ['phone_number', 'password', 'password2', 'verification_code']
 
     def clean(self):
         cleaned_data = super().clean()
         # 验证验证码
-        self.validate_vcode(cleaned_data['vcode'])
+        self.validate_vcode(cleaned_data['verification_code'])
         # 验证密码设置
         password = cleaned_data.get('password')
         password2 = cleaned_data.get('password2')

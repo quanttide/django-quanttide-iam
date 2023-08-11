@@ -10,12 +10,12 @@ class VCodeLoginFormTestCase(TenantTestCase):
 
     def setUp(self):
         # 登录
-        self.vcode_login_data = {'phone_number': '18888888888', 'vcode': '123456'}
+        self.vcode_login_data = {'phone_number': '18888888888', 'verification_code': '123456'}
         User.objects.create(phone_number=self.vcode_login_data['phone_number'])
-        cache.set('+86' + self.vcode_login_data['phone_number'], self.vcode_login_data['vcode'])
+        cache.set('+86' + self.vcode_login_data['phone_number'], self.vcode_login_data['verification_code'])
         # 注册
-        self.vcode_signup_data = {'phone_number': '19999999999', 'vcode': '123456'}
-        cache.set('+86' + self.vcode_signup_data['phone_number'], self.vcode_signup_data['vcode'])
+        self.vcode_signup_data = {'phone_number': '19999999999', 'verification_code': '123456'}
+        cache.set('+86' + self.vcode_signup_data['phone_number'], self.vcode_signup_data['verification_code'])
 
     def test_is_valid_new(self):
         form = self.form_class(self.vcode_signup_data)

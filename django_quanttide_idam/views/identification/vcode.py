@@ -13,7 +13,7 @@ class VCodeLoginView(APIView):
     ```
     {
         'mobile': '1888888888',
-        'vcode': '123456',
+        'verification_code': '123456',
     }
     ```
     """

@@ -1,6 +1,6 @@
 # `django-quanttide-idam`
 
-量潮身份与访问管理Django工具箱。
+量潮身份与访问管理Django工具箱
 
 ## Installation 
 

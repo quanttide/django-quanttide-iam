@@ -1,32 +1,26 @@
 [build-system]
-requires = ["setuptools>=61", "setuptools.scm"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
-# name it as your package name
+[tool.poetry]
 name = "django-quanttide-idam"
-# semetric versions
 version = "0.1.0-alpha.1"
-# describe the package within one sentence
-description = "量潮IdAM Django SDK"
-authors = [{ name = "QuantTide Inc.", email = "opensource@quanttide.com" }]
-license = { text = "Apache 2.0" }
+description = "量潮身份与访问管理Django工具箱"
+authors = ["QuantTide Inc. <opensource@quanttide.com>"]
+license = "Apache-2.0"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Framework :: Django",
     "License :: OSI Approved :: Apache Software License",
-    "Development Status :: 2 - Pre-Alpha",
-]
-requires-python = '>=3'
-dependencies = [
-    "django>=2.0.0",
-    "djangorestframework>=3.0.0",
-    "authlib>=1.1.0"
+    "Development Status :: 2 - Pre-Alpha"
 ]
 
-[project.readme]
-file = "README.md"
-content-type = "text/markdown"
+[tool.poetry.dependencies]
+python = "^3.8"
+django = "^4.0"
+djangorestframework = "^3.0"
+authlib = "^1.0"
+phonenumbers = "^8.13.18"
+django-phonenumber-field = "^7.1.0"
 
-[tool.setuptools]
-packages = ["django_quanttide_idam"]
+[tool.poetry.dev-dependencies]
